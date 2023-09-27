@@ -1,0 +1,12 @@
+FROM python:3.11
+
+WORKDIR /bot
+
+# Сначала копируем только requirements.txt и устанавливаем зависимости
+COPY bot/requirements.txt /bot/
+RUN pip install -r requirements.txt
+
+# Затем копируем все остальное
+COPY bot /bot
+
+CMD ["python", "main.py"]
